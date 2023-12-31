@@ -1,0 +1,45 @@
+---
+#k8s-worker1
+
+- name: tools installation on k8s-worker1
+  hosts: k8s-worker1
+  become: yes
+
+  tasks:
+    - name: Run script on the k8s-worker1
+      script:
+        cmd: "k8s-worker.sh"
+
+#k8s-worker2
+
+- name: tools installation on k8s-worker2
+  hosts: k8s-worker2
+  become: yes
+
+  tasks:
+    - name: Run script on the k8s-worker2
+      script:
+        cmd: "k8s-worker.sh"
+
+#k8s-master
+
+- name: tools installation on k8s-master
+  hosts: k8s-master
+  become: yes
+
+  tasks:
+    - name: Run script on the k8s-master
+      script:
+        cmd: "k8s-master.sh"
+
+#localhost/jenkins master
+
+- name: tools installation on jenkins-ansible- master
+  hosts: localhost
+  become: yes
+
+  tasks:
+    - name: Run script on the jenskins-ansible-master
+      script:
+        cmd: "jenkins-ansible-master.sh"
+
