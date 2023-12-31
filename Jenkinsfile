@@ -13,9 +13,9 @@ pipeline {
             steps {
                 echo 'Deleting old Docker image...'
                 script {
-                    sh 'docker ps -a -q --filter "ancestor=$IMAGE_NAME" | xargs -r docker stop'
-                    sh 'docker ps -a -q --filter "ancestor=$IMAGE_NAME" | xargs -r docker rm'
-                    sh 'docker rmi $IMAGE_NAME'
+                    sh 'sudo docker ps -a -q --filter "ancestor=$IMAGE_NAME" | xargs -r docker stop'
+                    sh 'sudo docker ps -a -q --filter "ancestor=$IMAGE_NAME" | xargs -r docker rm'
+                    sh 'sudo docker rmi $IMAGE_NAME'
                 }
             }
         }
