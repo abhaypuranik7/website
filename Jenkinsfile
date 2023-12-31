@@ -9,6 +9,18 @@ pipeline {
     }
 
     stages {
+        stage('Delete Old Docker Image') {
+            steps {
+                echo 'Deleting old Docker image...'
+                script {
+                    sh 'docker ps -a -q --filter "ancestor=$IMAGE_NAME" | xargs -r docker stop'
+                    sh 'docker ps -a -q --filter "ancestor=$IMAGE_NAME" | xargs -r docker rm'
+                    sh 'docker rmi $IMAGE_NAME'
+                }
+            }
+        }
+
+
         stage('Build Docker Image') {
             steps {
                 echo 'Building the Docker image...'
