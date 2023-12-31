@@ -13,7 +13,7 @@ pipeline {
             steps {
                 echo 'Building the Docker image...'
                 script {
-                    sh 'docker build -t $IMAGE_NAME .'
+                    sh 'sudo docker build -t $IMAGE_NAME .'
                 }
             }
         }
@@ -22,7 +22,7 @@ pipeline {
             steps {
                 echo 'Pushing Docker image to Docker Hub...'
                 script {
-                    sh 'docker push $IMAGE_NAME'
+                    sh 'sudo docker push $IMAGE_NAME'
                 }
             }
         }
